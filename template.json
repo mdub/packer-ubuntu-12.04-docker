@@ -65,45 +65,30 @@
         {
             "type": "shell",
             "script": "scripts/vagrant.sh",
+            "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
             "override": {
                 "amazon-ebs": {
                     "execute_command": "/bin/true"
-                },
-                "virtualbox": {
-                    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
-                },
-                "vmware": {
-                    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
                 }
             }
         },
         {
             "type": "shell",
             "script": "scripts/virtualbox.sh",
+            "execute_command": "/bin/true",
             "override": {
-                "amazon-ebs": {
-                    "execute_command": "/bin/true"
-                },
                 "virtualbox": {
                     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
-                },
-                "vmware": {
-                    "execute_command": "/bin/true"
                 }
             }
         },
         {
             "type": "shell",
             "script": "scripts/kernel.sh",
+            "execute_command": "/bin/true",
             "override": {
                 "amazon-ebs": {
                     "execute_command": "{{.Vars}} sudo -E bash '{{.Path}}'"
-                },
-                "virtualbox": {
-                    "execute_command": "/bin/true"
-                },
-                "vmware": {
-                    "execute_command": "/bin/true"
                 }
             }
         },
