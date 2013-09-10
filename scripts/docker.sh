@@ -4,9 +4,13 @@
 perl -p -i -e 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"/g'  /etc/default/grub
 /usr/sbin/update-grub
 
-# add docker group and add vagrant to it
+# add docker group and add SSH user to it
 sudo groupadd docker
-sudo usermod -a -G docker vagrant
+for user in vagrant ubuntu; do
+  if getent passwd $user > /dev/null; then
+    sudo usermod -a -G docker $user
+  fi
+done
 
 # install curl
 apt-get update
