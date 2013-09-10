@@ -4,9 +4,6 @@ This repository contains a Packer template for building machine images
 that are Docker-ready on top of Ubuntu 12.04. This involves upgrading the
 kernel and installing Docker.
 
-Currently this is only setup for Amazon, but it should be trivial to add
-more platforms to this.
-
 ## Usage
 
 First, [install Packer](http://www.packer.io/intro/getting-started/setup.html).
@@ -15,9 +12,9 @@ Then, clone this repository and `cd` into it.
 Run the following:
 
 ```
-$ export AWS_ACCESS_KEY="your aws access key"
-$ export AWS_SECRET_KEY="your aws secret key"
+$ export AWS_ACCESS_KEY_ID="your aws access key"
+$ export AWS_SECRET_ACCESS_KEY="your aws secret key"
 $ packer build template.json
 ```
 
-At the end of that, you'll have an AMI ready to go for Docker.
+At the end of that, you'll have a VirtualBox image, and an AMI, each with Docker installed, and the corresponding Vagrant *.box files.
