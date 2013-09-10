@@ -16,27 +16,6 @@
             "ami_name": "packer-docker {{timestamp}}"
         },
         {
-            "type": "vmware",
-            "iso_url": "http://releases.ubuntu.com/12.04/ubuntu-12.04.3-server-amd64.iso",
-            "iso_checksum": "61d5e67c70d97b33c13537461a0b153b41304ef412bb0e9d813bb157068c3c65",
-            "iso_checksum_type": "sha256",
-            "boot_wait": "5s",
-            "boot_command": [
-                "<esc><esc><enter><wait>",
-                "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-                "debian-installer=en_AU auto locale=en_AU kbd-chooser/method=uk ",
-                "hostname={{ .Name }} ",
-                "fb=false debconf/frontend=noninteractive ",
-                "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=UK keyboard-configuration/variant=UK console-setup/ask_detect=false ",
-                "initrd=/install/initrd.gz -- <enter>"
-            ],
-            "http_directory": "http",
-            "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
-            "ssh_wait_timeout": "20m",
-            "ssh_username": "vagrant",
-            "ssh_password": "vagrant"
-        },
-        {
             "type": "virtualbox",
             "iso_url": "http://releases.ubuntu.com/12.04/ubuntu-12.04.3-server-amd64.iso",
             "iso_checksum": "61d5e67c70d97b33c13537461a0b153b41304ef412bb0e9d813bb157068c3c65",
@@ -103,9 +82,6 @@
                     "execute_command": "{{.Vars}} sudo -E bash '{{.Path}}'"
                 },
                 "virtualbox": {
-                    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
-                },
-                "vmware": {
                     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
                 }
             }
