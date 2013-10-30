@@ -17,6 +17,7 @@
         },
         {
             "type": "virtualbox",
+            "guest_os_type": "Ubuntu_64",
             "iso_url": "http://releases.ubuntu.com/12.04/ubuntu-12.04.3-server-amd64.iso",
             "iso_checksum": "61d5e67c70d97b33c13537461a0b153b41304ef412bb0e9d813bb157068c3c65",
             "iso_checksum_type": "sha256",
